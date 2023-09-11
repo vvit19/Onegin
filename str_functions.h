@@ -4,7 +4,6 @@
 #include <cstdlib>
 
 int mystrcmp(const char* s1, const char* s2);
-const char* ignore_no_letters(const char* string);
-size_t mystrlen(char* string);
+int reverse_strcmp(const char* s1, const char* s2);
 
 #endif

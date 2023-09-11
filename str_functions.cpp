@@ -3,27 +3,51 @@
 #include <cstdlib>
 #include "str_functions.h"
 
-const char* ignore_no_letters(const char* string)
+static const char* ignore_no_letters(const char* string);
+static const char* reverse_ignore_no_letters(const char* string);
+
+static const char* ignore_no_letters(const char* string)
 {
     assert(string);
 
-    const char* help_ptr = string;
-
-    for ( ; ; help_ptr++)
+    for ( ; ; string++)
     {
-        if (*help_ptr == '\0')
+        if (*string == '\0')
         {
             return string;
         }
 
-        if (! ((*help_ptr >= 'a' && *help_ptr <= 'z') || 
-               (*help_ptr >= 'A' && *help_ptr <= 'Z')))
+        if (! ((*string >= 'a' && *string <= 'z') || 
+               (*string >= 'A' && *string <= 'Z')))
         {
             continue;
         }
 
-        return help_ptr;
+        return string;
     }
+}
+
+static const char* reverse_ignore_no_letters(const char* string)
+{
+    assert(string);
+
+    if (*string - 1 == '\n')
+    {
+        return string;
+    }
+
+    while (*string != '\0')
+    {
+        string++;
+    }
+
+    while(! ((*string >= 'a' && *string <= 'z') || 
+             (*string >= 'A' && *string <= 'Z')))
+    {
+        string--;
+    }
+
+    return string;
 }
 
 int mystrcmp(const char* str1, const char* str2)
@@ -46,13 +70,26 @@ int mystrcmp(const char* str1, const char* str2)
     return str1[i] - str2[i];
 }
 
-size_t mystrlen(char* string)
+int reverse_strcmp(const char* str1, const char* str2)
 {
-    assert(string);
+    assert(str1);
+    assert(str2);
 
-    int len = 0;
+    const char* start_ptr1 = str1;
+    const char* start_ptr2 = str2;
 
-    for (; string[len] != '\0'; len++);
+    str1 = reverse_ignore_no_letters(str1);
+    str2 = reverse_ignore_no_letters(str2);    
 
-    return len;
+    for ( ; *str1 == *str2; )
+    {
+        if (str1 == start_ptr1 && str2 == start_ptr2)
+        {
+            return 0;
+        }
+
+        str1--; str2--;
+    }
+
+    return *str1 - *str2;
 }

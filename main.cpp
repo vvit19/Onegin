@@ -19,12 +19,32 @@ int main()
     int nlines = calc_nlines(buffer, file_size);
     char** text = parse_buffer(buffer, nlines + 1, file_size);
 
-    bubble_sort(text, nlines, sizeof(char*), &char_cmp);
-
     FILE* out = fopen("hamlet_sorted.txt", "w");
+
+    bubble_sort(text, nlines, sizeof(char*), &char_cmp);
+    fprintf(out, "\n\nDefault text sort\n\n");
     for (int i = 0; i <= nlines; i++)
     {
         fputs(text[i], out);
+    }
+
+    bubble_sort(text, nlines, sizeof(char*), &reverse_char_cmp);
+    fprintf(out, "\n\nText sort by string endings\n\n");
+    for (int i = 0; i <= nlines; i++)
+    {
+        fputs(text[i], out);
+    }
+
+    fprintf(out, "\n\nAnd you can read true Hamlet text!!!\n\n\n");
+    size_t shift = 0;
+    for (int i = 0; i <= nlines; i++)
+    {
+        fprintf(out, "%s", buffer + shift);
+        while (buffer[shift] != '\0')
+        {
+            shift++;
+        }     
+        shift++;   
     }
 
     free(buffer);
