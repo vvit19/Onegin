@@ -1,4 +1,5 @@
 #include <cassert>
+
 #include "comparator.h"
 #include "str_functions.h"
 

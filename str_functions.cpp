@@ -1,6 +1,7 @@
 #include <cassert>
 #include <cstdio>
 #include <cstdlib>
+
 #include "str_functions.h"
 
 static const char* ignore_no_letters(const char* string);
@@ -83,9 +84,19 @@ int reverse_strcmp(const char* str1, const char* str2)
 
     for ( ; *str1 == *str2; )
     {
-        if (str1 == start_ptr1 && str2 == start_ptr2)
+        if (str1 == start_ptr1)
         {
-            return 0;
+            if (str2 == start_ptr2)
+            {
+                return 0;
+            }
+
+            return -1;
+        }
+
+        if (str2 == start_ptr2)
+        {
+            return 1;
         }
 
         str1--; str2--;
