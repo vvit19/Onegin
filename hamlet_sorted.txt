@@ -1,6 +1,4 @@
-
-
-Default text sort
+------------------Alphabet sorted text:-------------------
 
 1604
 A double blessing is a double grace;
@@ -4168,12 +4166,14 @@ your wisdom best shall think.
 yourself and him, he shall not exceed you three hits; he hath
 
 
-Text sort by string endings
+    ------------------Text sorted by endings-------------------    
+
 
 reason and sanity could not so prosperously be delivered of. I
 Ham. They are sheep and calves which seek out assurance in that. I
 Guil. But these cannot i command to any utt'rance of harmony. I
 O, you must wear your rue with a difference! There's a daisy. I
+1604
 of his action of battery? Hum! This fellow might be in's time a
 Ham. So long? Nay then, let the devil wear black, for i'll have a
 chronicles of the time. After your death you were better have a
@@ -4211,7 +4211,6 @@ Dear maid, kind sister, sweet ophelia!
 affront ophelia.
 Queen. Nay, but ophelia-
 King. Pretty ophelia!
-1604
 and fall a-cursing like a very drab,
 would from a paddock, from a bat, a gib
 or given my heart a winking, mute and dumb,
@@ -8336,7 +8335,8 @@ Enter rosencrantz.
 Ham. Buzz, buzz!
 
 
-And you can read true Hamlet text!!!
+
+    ------------------And you can read true Hamlet text------------------    
 
 
 1604

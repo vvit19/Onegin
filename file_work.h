@@ -1,10 +1,14 @@
 #ifndef FILE_WORK_H
 #define FILE_WORK_H
 
-#include <cstdio>
+struct File_to_Buffer {
+    int file_size;
+    char* buffer;
+    int nlines;
+    char** text;
+};
 
-int get_file_size(FILE* file);
-char* get_file_content(FILE* file, int file_size);
-int calc_nlines(char* buffer, int file_size);
+File_to_Buffer* get_buffer_from_file();
+void print_to_file(File_to_Buffer* file_and_buffer);
 
 #endif

@@ -93,3 +93,28 @@ int reverse_strcmp(const char* str1, const char* str2)
 
     return *str1 - *str2;
 }
+
+char** parse_buffer(char* buffer, int nlines, int file_size)
+{
+    assert(buffer);
+
+    char** text = (char**) calloc(nlines + 1, sizeof(char*));
+    assert(text);
+    text[0] = buffer;
+
+    for (int i = 0, j = 0; i < file_size; i++)
+    {
+        if (buffer[i] == '\n')
+        {
+            text[++j] = &buffer[i + 1];
+            buffer[i] = '\0';
+        }
+
+        if (buffer[i] == '\r')
+        {
+           buffer[i] = '\n';
+        }
+    }
+
+    return text;
+}
