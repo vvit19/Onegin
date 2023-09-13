@@ -14,22 +14,22 @@ COMPILE = g++ -c $^ $(CFlAGS)
 all: $(TARGET)
 
 $(TARGET): main.o file_work.o str_functions.o strings_sort.o comparator.o
-	g++ $^ -o $(TARGET) $(CFlAGS)
+	@g++ $^ -o $(TARGET) $(CFlAGS)
 
 main.o: main.cpp 
-	$(COMPILE)
+	@$(COMPILE)
 
 file_work.o: file_work.cpp
-	$(COMPILE)
+	@$(COMPILE)
 
 str_functions.o: str_functions.cpp 
-	$(COMPILE)
+	@$(COMPILE)
 
 strings_sort.o: strings_sort.cpp
-	$(COMPILE)
+	@$(COMPILE)
 
 comparator.o: comparator.cpp
-	$(COMPILE)
+	@$(COMPILE)
 
 .PHONY: clean
 clean:

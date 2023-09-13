@@ -56,6 +56,11 @@ int mystrcmp(const char* str1, const char* str2)
     assert(str1);
     assert(str2);
 
+    if (str1 == str2)
+    {
+        return 0;
+    }
+
     str1 = ignore_no_letters(str1);
     str2 = ignore_no_letters(str2);
 
@@ -75,6 +80,11 @@ int reverse_strcmp(const char* str1, const char* str2)
 {
     assert(str1);
     assert(str2);
+
+    if (str1 == str2)
+    {
+        return 0;
+    }
 
     const char* start_ptr1 = str1;
     const char* start_ptr2 = str2;
