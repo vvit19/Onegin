@@ -32,7 +32,7 @@ static const char* reverse_ignore_no_letters(const char* string)
 {
     assert(string);
 
-    if (*string - 1 == '\n')
+    if (*string == '\n')
     {
         return string;
     }

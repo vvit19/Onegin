@@ -86,10 +86,12 @@ void print_to_file(File_to_Buffer* file_and_buffer)
     assert(file);
 
     bubble_sort(file_and_buffer->text, file_and_buffer->nlines, sizeof(char*), &char_cmp);    
+//    quick_sort(file_and_buffer->text, 0, file_and_buffer->nlines - 1, sizeof(char*), &char_cmp);
     fprintf(file, "------------------Alphabet sorted text:-------------------\n\n");
     fprint_sorted(file, file_and_buffer->text, file_and_buffer->nlines);
 
     bubble_sort(file_and_buffer->text, file_and_buffer->nlines, sizeof(char*), &reverse_char_cmp);  
+//    quick_sort(file_and_buffer->text, 0, file_and_buffer->nlines - 1, sizeof(char*), &reverse_char_cmp);
     fprintf(file, "\n\n    ------------------Text sorted by endings-------------------    \n\n\n");      
     fprint_sorted(file, file_and_buffer->text, file_and_buffer->nlines);
 
@@ -115,7 +117,7 @@ static void fprint_default(FILE* file, char* buffer, int nlines)
     assert(file);
     assert(buffer);
 
-    size_t shift = 0;
+    int shift = 0;
 
     for (int i = 0; i <= nlines; i++)
     {
