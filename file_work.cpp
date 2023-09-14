@@ -85,15 +85,13 @@ void print_to_file(File_to_Buffer* file_and_buffer)
     FILE* file = fopen("hamlet_sorted.txt", "w");
     assert(file);
 
-    void* free_memory = (void*) calloc(1, sizeof(char*));
-
-//  bubble_sort(file_and_buffer->text, file_and_buffer->nlines, sizeof(char*), &char_cmp, free_memory);    
-    quick_sort(file_and_buffer->text, 0, file_and_buffer->nlines, sizeof(char*), &char_cmp, free_memory);
+//  bubble_sort(file_and_buffer->text, file_and_buffer->nlines, sizeof(char*), &char_cmp);    
+    quick_sort(file_and_buffer->text, 0, file_and_buffer->nlines - 1, sizeof(char*), &char_cmp);
     fprintf(file, "------------------Alphabet sorted text:-------------------\n\n");
     fprint_sorted(file, file_and_buffer->text, file_and_buffer->nlines);
 
-//  bubble_sort(file_and_buffer->text, file_and_buffer->nlines, sizeof(char*), &reverse_char_cmp, free_memory);  
-    quick_sort(file_and_buffer->text, 0, file_and_buffer->nlines, sizeof(char*), &reverse_char_cmp, free_memory);
+//  bubble_sort(file_and_buffer->text, file_and_buffer->nlines, sizeof(char*), &reverse_char_cmp);  
+    quick_sort(file_and_buffer->text, 0, file_and_buffer->nlines - 1, sizeof(char*), &reverse_char_cmp);
     fprintf(file, "\n\n    ------------------Text sorted by endings-------------------    \n\n\n");      
     fprint_sorted(file, file_and_buffer->text, file_and_buffer->nlines);
 
@@ -101,7 +99,6 @@ void print_to_file(File_to_Buffer* file_and_buffer)
     fprint_default(file, file_and_buffer->buffer, file_and_buffer->nlines);
     
     fclose(file);
-    free(free_memory);
 }
 
 static void fprint_sorted(FILE* file, char** text, int nlines)

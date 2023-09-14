@@ -6,58 +6,54 @@
 #include "strings_sort.h"
 #include "str_functions.h"
 
-static void swap(void* a, void* b, int el_size, void* temp);
+static void swap(void* ptr1, void* ptr2, int el_size);
 
 void quick_sort(void* array, int low_limit, int high_limit, int el_size,
-                int (*cmp_function)(const void* a, const void* b), void* free_memory)
+                int (*cmp_function)(const void* a, const void* b))
 {
     assert(array);
     assert(cmp_function);
-    assert(free_memory);
+
+    if (low_limit >= high_limit)
+    {
+        return;
+    }
 
     int left = low_limit;
-    int right = high_limit - 1;
-    int pivot = (low_limit + high_limit) / 2;
+    int right = high_limit;
+
+    int pivot_num = (low_limit + high_limit) / 2;
+    void* pivot = *(void**) ((int) array + pivot_num * el_size);
 
     do
     {
-        while (cmp_function( *(void**) ((int) array + left * el_size), 
-                             *(void**) ((int) array + pivot * el_size) ) < 0)
+        while (cmp_function( *(void**) ((int) array + left  * el_size), pivot ) < 0)
         {
             left++;
         }
 
-        while (cmp_function( *(void**) ((int) array + right * el_size), 
-                             *(void**) ((int) array + pivot * el_size) ) > 0)
+        while (cmp_function( *(void**) ((int) array + right * el_size), pivot ) > 0)
         {
             right--;
         }        
 
         if (left <= right)
         {
-            swap((void*) ((int) array + left * el_size), (void*) ((int) array + right * el_size), el_size, free_memory);
+            swap((void*) ((int) array + left * el_size), (void*) ((int) array + right * el_size), el_size);
             left++; right--;
         }
 
-    }   while (left <= right);
-    
-    if (right > 0 && (right + 1 - low_limit) > 2)
-    {
-        quick_sort(array, low_limit, right + 1, el_size, cmp_function, free_memory);
-    }
+    }   while (left < right);
 
-    if (left < high_limit && (high_limit - left) > 2)
-    {
-        quick_sort(array, left, high_limit, el_size, cmp_function, free_memory);
-    }
+    quick_sort(array, low_limit, right, el_size, cmp_function);
+    quick_sort(array, left, high_limit, el_size, cmp_function);
 }
 
 void bubble_sort(void* array, int array_size, int el_size, 
-                 int (*cmp_function)(const void* a, const void* b), void* free_memory)
+                 int (*cmp_function)(const void* a, const void* b))
 {
     assert(array);
     assert(cmp_function);
-    assert(free_memory);
 
     for (int i = 0; i < array_size; i++)
     {
@@ -66,19 +62,27 @@ void bubble_sort(void* array, int array_size, int el_size,
             if (cmp_function( *(void**) ((int) array + j * el_size),
                               *(void**) ((int) array + (j + 1) * el_size) ) > 0)
             {
-                swap((void*) ((int) array + j * el_size), (void*) ((int) array + (j + 1) * el_size), el_size, free_memory);             
+                swap((void*) ((int) array + j * el_size), (void*) ((int) array + (j + 1) * el_size), el_size);             
             }
         }
     }
 }
 
-static void swap(void* ptr1, void* ptr2, int el_size, void* temp)
+static void swap(void* ptr1, void* ptr2, int el_size)
 {
     assert(ptr1);
     assert(ptr2);
-    assert(temp);
 
-    memcpy(temp, ptr1, el_size);
-    memcpy(ptr1, ptr2, el_size);
-    memcpy(ptr2, temp, el_size);
+    char* p1  = (char*) ptr1;
+    char* p2  = (char*) ptr2;
+    char temp = 0;
+
+    for (int i = 0; i < el_size; i++)
+    {
+        memcpy(&temp, p1, sizeof(char));
+               memcpy(p1, p2, sizeof(char));
+                   memcpy(p2, &temp, sizeof(char));
+
+        p1++; p2++;
+    }    
 }
