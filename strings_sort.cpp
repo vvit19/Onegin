@@ -9,7 +9,7 @@
 static void swap(void* ptr1, void* ptr2, int el_size);
 
 void quick_sort(void* array, int low_limit, int high_limit, int el_size,
-                int (*cmp_function)(const void* a, const void* b))
+                int (*cmp_function)(void* array, int position, int el_size, void* cmp_element))
 {
     assert(array);
     assert(cmp_function);
@@ -27,12 +27,12 @@ void quick_sort(void* array, int low_limit, int high_limit, int el_size,
 
     do
     {
-        while (cmp_function( *(void**) ((int) array + left  * el_size), pivot ) < 0)
+        while (cmp_function( array, left, el_size, pivot ) < 0)
         {
             left++;
         }
 
-        while (cmp_function( *(void**) ((int) array + right * el_size), pivot ) > 0)
+        while (cmp_function( array, right, el_size, pivot ) > 0)
         {
             right--;
         }        
@@ -47,25 +47,6 @@ void quick_sort(void* array, int low_limit, int high_limit, int el_size,
 
     quick_sort(array, low_limit, right, el_size, cmp_function);
     quick_sort(array, left, high_limit, el_size, cmp_function);
-}
-
-void bubble_sort(void* array, int array_size, int el_size, 
-                 int (*cmp_function)(const void* a, const void* b))
-{
-    assert(array);
-    assert(cmp_function);
-
-    for (int i = 0; i < array_size; i++)
-    {
-        for (int j = 0; j < array_size - i - 1; j++)
-        {
-            if (cmp_function( *(void**) ((int) array + j * el_size),
-                              *(void**) ((int) array + (j + 1) * el_size) ) > 0)
-            {
-                swap((void*) ((int) array + j * el_size), (void*) ((int) array + (j + 1) * el_size), el_size);             
-            }
-        }
-    }
 }
 
 static void swap(void* ptr1, void* ptr2, int el_size)

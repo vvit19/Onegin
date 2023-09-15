@@ -18,7 +18,12 @@ static void free_all_memory(File_to_Buffer* file_and_buffer)
 {
     assert(file_and_buffer);
 
+    file_and_buffer->buffer = nullptr;
     free(file_and_buffer->buffer);
+
+    file_and_buffer->text = nullptr;
     free(file_and_buffer->text);
+
+    file_and_buffer = nullptr;
     free(file_and_buffer);
 }

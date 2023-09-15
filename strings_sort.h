@@ -3,9 +3,7 @@
 
 #include <cstdio>
 
-void  quick_sort(void* array, int left, int right, int el_size,
-                 int (*cmp_function)(const void* a, const void* b));
-void bubble_sort(void* array, int array_size, int el_size, 
-                 int (*cmp_function)(const void* a, const void* b));
+void quick_sort(void* array, int left, int right, int el_size,
+                 int (*cmp_function)(void* array, int position, int el_size, void* cmp_element));
 
 #endif

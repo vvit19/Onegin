@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include <cassert>
 #include <cstdio>
+#include <cstring>
 
 #include "file_work.h"
 #include "comparator.h"
@@ -24,7 +25,7 @@ File_to_Buffer* get_buffer_from_file()
     file_and_buffer->file_size = get_file_size(file);
 
     file_and_buffer->buffer = get_file_content(file, 
-                                               file_and_buffer->file_size);
+                                               &file_and_buffer->file_size);
 
     file_and_buffer->nlines = calc_nlines(file_and_buffer->buffer, 
                                           file_and_buffer->file_size);
@@ -49,15 +50,15 @@ static int get_file_size(FILE* file)
     return position;
 }
 
-static char* get_file_content(FILE* file, int file_size)
+static char* get_file_content(FILE* file, int* file_size)
 {
     assert(file);
     
-    char* buffer = (char*) calloc(file_size + 1, sizeof(char));
+    char* buffer = (char*) calloc(*file_size + 1, sizeof(char));
     assert(buffer);
 
-    buffer[file_size] = '\n'; 
-    fread(buffer, sizeof(char), file_size, file);
+    buffer[*file_size] = '\n'; 
+    *file_size = fread(buffer, sizeof(char), *file_size, file);
 
     return buffer;
 }
@@ -85,12 +86,10 @@ void print_to_file(File_to_Buffer* file_and_buffer)
     FILE* file = fopen("hamlet_sorted.txt", "w");
     assert(file);
 
-//  bubble_sort(file_and_buffer->text, file_and_buffer->nlines, sizeof(char*), &char_cmp);    
     quick_sort(file_and_buffer->text, 0, file_and_buffer->nlines - 1, sizeof(char*), &char_cmp);
     fprintf(file, "------------------Alphabet sorted text:-------------------\n\n");
     fprint_sorted(file, file_and_buffer->text, file_and_buffer->nlines);
 
-//  bubble_sort(file_and_buffer->text, file_and_buffer->nlines, sizeof(char*), &reverse_char_cmp);  
     quick_sort(file_and_buffer->text, 0, file_and_buffer->nlines - 1, sizeof(char*), &reverse_char_cmp);
     fprintf(file, "\n\n    ------------------Text sorted by endings-------------------    \n\n\n");      
     fprint_sorted(file, file_and_buffer->text, file_and_buffer->nlines);

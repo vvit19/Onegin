@@ -5820,6 +5820,7 @@ Scene iii.
 Scene iii.
 Scene vii.
 scene vi.
+1604
 a dull and muddy-mettled rascal, peak
 o, speak!
 visitation? Come, deal justly with me. Come, come! Nay, speak.
@@ -6445,8 +6446,8 @@ Enter rosencrantz and guildenstern.
 Enter rosencrantz and guildenstern.
 Enter rosencrantz and guildenstern.
 enter rosencrantz and guildenstern.
-Exeunt rosencrantz and guildenstern.
 Exeunt rosencrantz and guildenstern]
+Exeunt rosencrantz and guildenstern.
 [exeunt rosencrantz and guildenstern
 [exeunt rosencrantz and guildenstern. ]
 Exeunt [rosencrantz and guildenstern].
@@ -7799,12 +7800,12 @@ should have kept short, restrain'd, and out of haunt
 Exeunt.
 Exeunt.
 Exeunt.
+Exeunt.
+Exeunt.
+Exeunt.
+Exeunt.
+Exeunt.
 Exeunt
-Exeunt.
-Exeunt.
-Exeunt.
-Exeunt.
-Exeunt.
 Exeunt.
 to him from whom you brought them. Exeunt.
 Madness in great ones must not unwatch'd go. Exeunt.
@@ -8086,7 +8087,6 @@ Ham. Follow him, friends. We'll hear a play to-morrow.
 Or are you like the painting of a sorrow,
 bears such an emphasis? Whose phrase of sorrow
 that it went hand in hand even with the vow
-1604
 to flaming youth let virtue be as wax
 that roars so loud and thunders in the index?
 translate beauty into his likeness. This was sometime a paradox,
@@ -8200,8 +8200,8 @@ they?
 [laertes wounds hamlet; then] in scuffling, they
 Ham. What, are they children? Who maintains 'em? How are they
 this warlike volley.
-Ham. Why?
 Ham. Why,
+Ham. Why?
 Ham. Why,
 than are dreamt of in your philosophy.
 humanity so abominably.
