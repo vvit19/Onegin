@@ -1,6 +1,7 @@
 #include <cassert>
 #include <cstdio>
 #include <cstdlib>
+#include <cctype>
 
 #include "str_functions.h"
 
@@ -18,8 +19,7 @@ static const char* ignore_no_letters(const char* string)
             return string;
         }
 
-        if (! ((*string >= 'a' && *string <= 'z') || 
-               (*string >= 'A' && *string <= 'Z')))
+        if (!isalpha(*string))
         {
             continue;
         }
@@ -42,8 +42,7 @@ static const char* reverse_ignore_no_letters(const char* string)
         string++;
     }
 
-    while(! ((*string >= 'a' && *string <= 'z') || 
-             (*string >= 'A' && *string <= 'Z')))
+    while (!isalpha(*string))
     {
         string--;
     }
@@ -123,17 +122,17 @@ char** parse_buffer(char* buffer, int nlines, int file_size)
     assert(text);
     text[0] = buffer;
 
-    for (int i = 0, j = 0; i < file_size; i++)
+    for (int buffer_index = 0, text_index = 0; buffer_index < file_size; buffer_index++)
     {
-        if (buffer[i] == '\n')
+        if (buffer[buffer_index] == '\n')
         {
-            text[++j] = &buffer[i + 1];
-            buffer[i] = '\0';
+            text[++text_index] = &buffer[buffer_index + 1];
+            buffer[buffer_index] = '\0';
         }
 
-        if (buffer[i] == '\r')
+        if (buffer[buffer_index] == '\r')
         {
-           buffer[i] = '\n';
+           buffer[buffer_index] = '\n';
         }
     }
 

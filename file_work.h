@@ -8,7 +8,7 @@ struct File_to_Buffer {
     char** text;
 };
 
-File_to_Buffer* get_buffer_from_file();
-void print_to_file(File_to_Buffer* file_and_buffer);
+File_to_Buffer* get_buffer_from_file(const char* filename);
+void print_to_file(File_to_Buffer* file_and_buffer, const char* filename);
 
 #endif

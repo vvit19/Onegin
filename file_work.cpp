@@ -9,14 +9,14 @@
 #include "strings_sort.h"
 
 static int get_file_size(FILE* file);
-static char* get_file_content(FILE* file, int file_size);
-static int calc_nlines(char* buffer, int file_size);
+static char* get_file_content(FILE* file, int* file_size);
+static int calc_nlines(char* buffer);
 static void fprint_sorted(FILE* file, char** text, int nlines);
 static void fprint_default(FILE* file, char* buffer, int nlines);
 
-File_to_Buffer* get_buffer_from_file()
+File_to_Buffer* get_buffer_from_file(const char* filename)
 {
-    FILE* file = fopen("hamlet.txt", "rb");
+    FILE* file = fopen(filename, "rb");
     assert(file);
 
     File_to_Buffer* file_and_buffer = (File_to_Buffer*) calloc(1, sizeof(File_to_Buffer));
@@ -27,8 +27,7 @@ File_to_Buffer* get_buffer_from_file()
     file_and_buffer->buffer = get_file_content(file, 
                                                &file_and_buffer->file_size);
 
-    file_and_buffer->nlines = calc_nlines(file_and_buffer->buffer, 
-                                          file_and_buffer->file_size);
+    file_and_buffer->nlines = calc_nlines(file_and_buffer->buffer);
 
     file_and_buffer->text = parse_buffer(file_and_buffer->buffer,
                                          file_and_buffer->nlines, 
@@ -63,27 +62,28 @@ static char* get_file_content(FILE* file, int* file_size)
     return buffer;
 }
 
-static int calc_nlines(char* buffer, int buffer_size)
+static int calc_nlines(char* buffer)
 {
+        
     assert(buffer);
 
-    int nlines = 1;
-    for (int i = 0; i < buffer_size; i++)
+    int nlines = 0;
+    char* temp = buffer;
+
+    while ((temp = strchr(temp, '\n')) != nullptr)
     {
-        if (buffer[i] == '\n')
-        {
-            nlines++;
-        }
+        nlines++;
+        temp++;
     }
 
     return nlines;
 }
 
-void print_to_file(File_to_Buffer* file_and_buffer)
+void print_to_file(File_to_Buffer* file_and_buffer, const char* filename)
 {
     assert(file_and_buffer);
 
-    FILE* file = fopen("hamlet_sorted.txt", "w");
+    FILE* file = fopen(filename, "w");
     assert(file);
 
     quick_sort(file_and_buffer->text, 0, file_and_buffer->nlines - 1, sizeof(char*), &char_cmp);
