@@ -86,7 +86,8 @@ void print_to_file(File_to_Buffer* file_and_buffer, const char* filename)
     FILE* file = fopen(filename, "w");
     assert(file);
 
-    quick_sort(file_and_buffer->text, 0, file_and_buffer->nlines - 1, sizeof(char*), &char_cmp);
+    qsort(file_and_buffer->text, file_and_buffer-> nlines - 1, sizeof(char*), &char_cmp);
+//  quick_sort(file_and_buffer->text, 0, file_and_buffer->nlines - 1, sizeof(char*), &char_cmp);
     fprintf(file, "------------------Alphabet sorted text:-------------------\n\n");
     fprint_sorted(file, file_and_buffer->text, file_and_buffer->nlines);
 

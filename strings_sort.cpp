@@ -9,10 +9,10 @@
 
 static void swap(void* ptr1, void* ptr2, int el_size);
 static int partition(void* array, int low_limit, int high_limit, int el_size,
-                     int (*cmp_function)(void* array, int position, int el_size, void* cmp_element));
+                     int (*cmp_function)(const void* s1, const void* s2));
 
 void quick_sort(void* array, int low_limit, int high_limit, int el_size,
-                int (*cmp_function)(void* array, int position, int el_size, void* cmp_element))
+                int (*cmp_function)(const void* s1, const void* s2))
 {
     if (low_limit < high_limit)
     {
@@ -24,24 +24,24 @@ void quick_sort(void* array, int low_limit, int high_limit, int el_size,
 }
 
 static int partition(void* array, int low_limit, int high_limit, int el_size,
-                     int (*cmp_function)(void* array, int position, int el_size, void* cmp_element))
+                     int (*cmp_function)(const void* s1, const void* s2))
 {
     int pivot_num = rand() % (high_limit - low_limit) + low_limit;
     swap((void*) ((int) array + pivot_num * el_size), (void*) ((int) array + high_limit * el_size), el_size);
 
-    void* pivot = *(void**) ((int) array + high_limit * el_size);
+    void* pivot = (void*) ((char*) array + high_limit * el_size);
 
     int cnt_for_greater = low_limit - 1;
-    int cnt_fot_smaller = low_limit;
+    int cnt_for_smaller = low_limit;
 
-    for (; cnt_fot_smaller < high_limit; cnt_fot_smaller++)
+    for (; cnt_for_smaller < high_limit; cnt_for_smaller++)
     {
-        if (cmp_function(array, cnt_fot_smaller, el_size, pivot) <= 0)
+        if (cmp_function( (void*) ((char*) array + cnt_for_smaller * el_size), pivot ) <= 0)
         {
             cnt_for_greater++;
 
             swap((void*) ((int) array + cnt_for_greater * el_size), 
-                 (void*) ((int) array + cnt_fot_smaller * el_size), el_size);
+                 (void*) ((int) array + cnt_for_smaller * el_size), el_size);
         }
     }
 

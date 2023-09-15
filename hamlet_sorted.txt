@@ -1623,7 +1623,6 @@ The courtier's, scholar's, soldier's, eye, tongue, sword,
 The crowner hath sate on her, and finds it christian burial.
 The drink, the drink! I am poison'd. [dies. ]
 The ears are senseless that should give us bearing
-The end
 The fair ophelia! - nymph, in thy orisons
 The glowworm shows the matin to be near
 The great man down, you mark his favourite flies,
@@ -2589,8 +2588,8 @@ ham. [aside] a little more than kin, and less than kind!
 hamlet is of the faction that is wrong'd;
 [hamlet moves him to put on his hat. ]
 hamlet the dane. [leaps in after laertes.
-hamlet. '
 'hamlet. '
+hamlet. '
 hast ta'en with equal thanks; and blest are those
 hath borne me on his back a thousand tunes. And now how abhorred
 hath clawed me in his clutch,
@@ -4164,6 +4163,7 @@ your visitation shall receive such thanks
 your whoreson dead body. Here's a skull now. This skull hath lien
 your wisdom best shall think.
 yourself and him, he shall not exceed you three hits; he hath
+The end
 
 
     ------------------Text sorted by endings-------------------    
@@ -6147,6 +6147,7 @@ But, as we often see, against some storm,
 of the fish that hath fed of that worm.
 th' unnerved father falls. Then senseless ilium,
 Enter fortinbras and english ambassadors, with drum,
+1604
 How now o what hath befall'n?
 faculties! In form and moving how express and admirable! In
 the point: if i drown myself wittingly, it argues an act; and an
@@ -6445,8 +6446,8 @@ Enter rosencrantz and guildenstern.
 Enter rosencrantz and guildenstern.
 Enter rosencrantz and guildenstern.
 enter rosencrantz and guildenstern.
-Exeunt rosencrantz and guildenstern.
 Exeunt rosencrantz and guildenstern]
+Exeunt rosencrantz and guildenstern.
 [exeunt rosencrantz and guildenstern. ]
 [exeunt rosencrantz and guildenstern
 Exeunt [rosencrantz and guildenstern].
@@ -7797,8 +7798,8 @@ will be some danger; which for to prevent,
 this is but scratch'd withal. I'll touch my point
 should have kept short, restrain'd, and out of haunt
 Exeunt.
-Exeunt
 Exeunt.
+Exeunt
 Exeunt.
 Exeunt.
 Exeunt.
@@ -8024,7 +8025,6 @@ Scene v.
 Scene iv.
 Scene iv.
 Scene iv.
-1604
 the end. He keeps them, like an ape, in the corner of his jaw;
 lost by his father, with all bands of law,
 Other. But is this law?
@@ -8200,8 +8200,8 @@ they?
 [laertes wounds hamlet; then] in scuffling, they
 Ham. What, are they children? Who maintains 'em? How are they
 this warlike volley.
-Ham. Why?
 Ham. Why,
+Ham. Why?
 Ham. Why,
 than are dreamt of in your philosophy.
 humanity so abominably.
